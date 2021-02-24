@@ -1,0 +1,106 @@
+	<div class="col-xl-7 col-md-4 offset-md-2 mt-5">
+
+		<div class="card o-hidden border-0 shadow-lg my-5">
+
+			<div class="card-body">
+
+				<!-- <div class="col-lg-10"> -->
+				<div class="p-5">
+					<div class="text-center">
+						<h3 class="horizontal text-center">Create an Account!!!</h3>
+					</div>
+					<div class="inner-form mt-5">
+						<form class="user" #registerForm='ngForm' (ngSubmit)='registerUser(registerForm)'>
+
+							<div class="form-group">
+								<input type="firstName" class="form-control" id="firstName" name="firstName"
+									placeholder="First Name" #firstName='ngModel' ngModel required pattern="[a-zA-Z\s]*"
+									placeholder="First Name">
+							</div>
+							<div *ngIf="firstName.touched && firstName.invalid">
+								<p class="alert alert-danger" *ngIf="firstName.errors.required">FirstName is required
+								</p>
+								<p class="alert alert-danger" *ngIf="firstName.errors.pattern">Accepts only Alphabets
+								</p>
+							</div>
+
+							<div class="form-group">
+								<input type="lastName" class="form-control" id="lastName" name="lastName"
+									placeholder="Last Name" #lastName='ngModel' ngModel required pattern="[a-zA-Z]*">
+							</div>
+							<div *ngIf="lastName.touched && lastName.invalid">
+								<p class="alert alert-danger" *ngIf="lastName.errors.required">LastName is required</p>
+								<p class="alert alert-danger" *ngIf="lastName.errors.pattern">Accepts only Alphabets</p>
+							</div>
+
+							<div class="form-group">
+								<input type="text" class="form-control" id="dob" name="dob"
+									placeholder="DOB(DD/MM/YYYY)" #dob='ngModel' ngModel required pattern="*">
+							</div>
+							<div *ngIf="dob.touched && dob.invalid">
+								<p class="alert alert-danger" *ngIf="dob.errors.required">LastName is required</p>
+								<p class="alert alert-danger" *ngIf="dob.errors.pattern">Accepts only Alphabets</p>
+							</div>
+
+
+							<div class="form-group">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Email"
+									#email='ngModel' ngModel required minlength="10"
+									pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail)\.com$">
+							</div>
+							<div *ngIf="email.touched && email.invalid">
+								<p class="alert alert-danger" *ngIf="email.errors.required">Email is required</p>
+								<p class="alert alert-danger" *ngIf="email.errors.pattern">Enter proper email</p>
+							</div>
+
+							<div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="mobileNo" name="mobileNo"
+										placeholder="Mobile Number" #mobileNo='ngModel' ngModel required mobile
+										minlength="10" pattern="[7-9]{1}[0-9]{9}">
+								</div>
+
+								<div *ngIf="mobileNo.touched && mobileNo.invalid">
+									<p class="alert alert-danger" *ngIf="mobileNo.errors.required">Mobile Number is
+										required</p>
+									<p class="alert alert-danger" *ngIf="mobileNo.errors.pattern">Mobile Number Should
+										be 10 Digits,
+										number starts with (7,8,9)</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control mt-3" id="pancard" name="pancard"
+									#pancard='ngModel' placeholder="Pancard" ngModel required minlength="15">
+							</div>
+							<div *ngIf="pancard.touched && pancard.invalid">
+								<p class="alert alert-danger" *ngIf="pancard.errors.required">Password is required</p>
+								<p class="alert alert-danger" *ngIf="pancard.errors.minlength">Accepts minimum 6
+									characters</p>
+							</div>
+
+
+							<!-- <div>
+								<div class="form-group">
+									<select name="role" id="role" #role='ngModel' ngModel class="form-control" required
+										placeholder="Role">
+										<option value="admin">Admin</option>
+										<option value="student">Student</option>
+									</select>
+								</div>
+							</div>
+							<div *ngIf="role.touched && role.invalid">
+								<p class="alert alert-danger" *ngIf="role.errors.required">Role is required</p>
+							</div> -->
+							<button type="submit" id="register"
+								class="btn btn-primary btn-user btn-block registerAccount"
+								[disabled]='registerForm.invalid'>
+								Register Account
+							</button>
+						</form>
+						<hr>
+						<div class="text-center">
+							<a class="small" routerLink="/login">Already have an account? Login!</a>
+						</div>
+					</div>
+				</div>
+			</div>

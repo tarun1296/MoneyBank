@@ -1,0 +1,47 @@
+<div class="col-xl-7 col-md-4 offset-md-2 mt-5">
+    <div class="card o-hidden border-0 shadow-lg">
+        <div class="card-body">
+            <div class="row">
+                    <div class="p-5 col-lg-10">
+                        <div class="text-center">
+                            <h4 class="horizontal">Welcome Back!!!</h4>
+                        </div>
+
+                        <form class="user mt-5" #loginForm='ngForm' (ngSubmit)='loginUser(loginForm)'>
+                            <div class="form-group mt-4">
+                                <input type="text" class="form-control" id="userId" name="userId" #userId='ngModel'
+                                    ngModel required placeholder="Enter Customer ID" maxlength="10"
+                                    pattern="[1-9]{1}[0-9]{9}">
+                            </div>
+                            <div *ngIf="userId.touched && userId.invalid">
+                                <p class="alert alert-danger" *ngIf="userId.errors.required">Customer Idis
+                                    required</p>
+                                <p class="alert alert-danger" *ngIf="userId.errors.minlength"> Accepts minimum
+                                    10 characters</p>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control mt-3" id="password" name="password"
+                                    #password='ngModel' placeholder="Password" ngModel required minlength="6"
+                                    placeholder="Password">
+                            </div>
+                            <div *ngIf="password.touched && password.invalid">
+                                <p class="alert alert-danger" *ngIf="password.errors.required">Password is
+                                    required</p>
+                                <p class="alert alert-danger" *ngIf="password.errors.minlength">Accepts minimum
+                                    6 characters</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block logincolor" name="loginbtn"
+                                [disabled]='loginForm.invalid'>
+                                Login
+                            </button>
+                            <hr>
+                        </form>
+                        <div class="text-center forgotcolor">
+                            <a class="small" routerLink="/register">Create an Account!</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
