@@ -9,9 +9,9 @@
 
                         <form class="user mt-5" #loginForm='ngForm' (ngSubmit)='loginUser(loginForm)'>
                             <div class="form-group mt-4">
-                                <input type="text" class="form-control" id="userId" name="userId" #userId='ngModel'
+                                <input type="text" class="form-control" id="userId" name="customerMobileNo" #userId='ngModel'
                                     ngModel required placeholder="Enter Customer ID" maxlength="10"
-                                    pattern="[1-9]{1}[0-9]{9}">
+                                    >
                             </div>
                             <div *ngIf="userId.touched && userId.invalid">
                                 <p class="alert alert-danger" *ngIf="userId.errors.required">Customer Idis

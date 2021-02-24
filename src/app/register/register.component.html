@@ -13,38 +13,48 @@
 						<form class="user" #registerForm='ngForm' (ngSubmit)='registerUser(registerForm)'>
 
 							<div class="form-group">
-								<input type="firstName" class="form-control" id="firstName" name="firstName"
-									placeholder="First Name" #firstName='ngModel' ngModel required pattern="[a-zA-Z\s]*"
-									placeholder="First Name">
+								<input type="name" class="form-control" id="name" name="customerName"
+									placeholder="Full Name" #name='ngModel' ngModel required pattern="[a-zA-Z\s]*"
+									>
 							</div>
-							<div *ngIf="firstName.touched && firstName.invalid">
-								<p class="alert alert-danger" *ngIf="firstName.errors.required">FirstName is required
+							<div *ngIf="name.touched && name.invalid">
+								<p class="alert alert-danger" *ngIf="name.errors.required">Name is required
 								</p>
-								<p class="alert alert-danger" *ngIf="firstName.errors.pattern">Accepts only Alphabets
+								<p class="alert alert-danger" *ngIf="name.errors.pattern">Accepts only Alphabets
 								</p>
 							</div>
 
-							<div class="form-group">
-								<input type="lastName" class="form-control" id="lastName" name="lastName"
-									placeholder="Last Name" #lastName='ngModel' ngModel required pattern="[a-zA-Z]*">
+							<!-- <div class="form-group">
+								<input type="gender" class="form-control" id="gender" name="customerGender"
+									placeholder="Gender" #gender='ngModel' ngModel required>
 							</div>
-							<div *ngIf="lastName.touched && lastName.invalid">
-								<p class="alert alert-danger" *ngIf="lastName.errors.required">LastName is required</p>
-								<p class="alert alert-danger" *ngIf="lastName.errors.pattern">Accepts only Alphabets</p>
-							</div>
+							<div *ngIf="gender.touched && gender.invalid">
+								<p class="alert alert-danger" *ngIf="gender.errors.required">Gender is required</p>
+								<p class="alert alert-danger" *ngIf="gender.errors.pattern">Accepts only Alphabets</p>
+							</div> -->
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<input type="text" class="form-control" id="dob" name="dob"
 									placeholder="DOB(DD/MM/YYYY)" #dob='ngModel' ngModel required pattern="*">
 							</div>
 							<div *ngIf="dob.touched && dob.invalid">
 								<p class="alert alert-danger" *ngIf="dob.errors.required">LastName is required</p>
 								<p class="alert alert-danger" *ngIf="dob.errors.pattern">Accepts only Alphabets</p>
-							</div>
+							</div> -->
+
+							<div class="form-group">
+                                <input type="text" class="form-control" id="dob" name="customerDOB" 
+                                onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')"
+                                    placeholder="DOB(DD/MM/YYYY)" #dob='ngModel' ngModel maxlength="10">
+                            </div>
+                            <!-- <div *ngIf="dob.touched && dob.invalid">
+                                <p class="alert alert-danger" *ngIf="dob.errors.required">Date of Birth is required</p>
+                                <p class="alert alert-danger" *ngIf="dob.errors.pattern">Accepts only Numbers and Black slash'/'</p>
+                            </div> -->
 
 
 							<div class="form-group">
-								<input type="email" class="form-control" id="email" name="email" placeholder="Email"
+								<input type="email" class="form-control" id="email" name="customerEmailId" placeholder="Email"
 									#email='ngModel' ngModel required minlength="10"
 									pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail)\.com$">
 							</div>
@@ -55,7 +65,7 @@
 
 							<div>
 								<div class="form-group">
-									<input type="text" class="form-control" id="mobileNo" name="mobileNo"
+									<input type="text" class="form-control" id="mobileNo" name="customerMobileNo"
 										placeholder="Mobile Number" #mobileNo='ngModel' ngModel required mobile
 										minlength="10" pattern="[7-9]{1}[0-9]{9}">
 								</div>
@@ -69,8 +79,8 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control mt-3" id="pancard" name="pancard"
-									#pancard='ngModel' placeholder="Pancard" ngModel required minlength="15">
+								<input type="text" class="form-control mt-3" id="pancard" name="pancardNo"
+									#pancard='ngModel' placeholder="Pancard" ngModel required minlength="8">
 							</div>
 							<div *ngIf="pancard.touched && pancard.invalid">
 								<p class="alert alert-danger" *ngIf="pancard.errors.required">Password is required</p>
@@ -79,18 +89,19 @@
 							</div>
 
 
-							<!-- <div>
+							<div>
 								<div class="form-group">
-									<select name="role" id="role" #role='ngModel' ngModel class="form-control" required
-										placeholder="Role">
-										<option value="admin">Admin</option>
-										<option value="student">Student</option>
+									<select name="customerGender" id="gender" #gender='ngModel' ngModel class="form-control" required
+										placeholder="Gender">
+										<option value="" disabled selected>Select Gender</option>
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
 									</select>
 								</div>
 							</div>
-							<div *ngIf="role.touched && role.invalid">
-								<p class="alert alert-danger" *ngIf="role.errors.required">Role is required</p>
-							</div> -->
+							<div *ngIf="gender.touched && gender.invalid">
+								<p class="alert alert-danger" *ngIf="gender.errors.required">Gender is required</p>
+							</div>
 							<button type="submit" id="register"
 								class="btn btn-primary btn-user btn-block registerAccount"
 								[disabled]='registerForm.invalid'>

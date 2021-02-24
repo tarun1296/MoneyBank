@@ -12,7 +12,7 @@ export class BankService {
   constructor(private http: HttpClient) {
   }
 
-  myURL = 'http://localhost:8080/lmsspringrest/';
+  myURL = 'http://localhost:9092/customer/';
 
   register(user) {
     return this.http.post<any>(`${this.myURL}addUser`, user);
@@ -20,7 +20,7 @@ export class BankService {
   
 
   login(user){
-    return this.http.post<any>(`${this.myURL}login`, user);
+    return this.http.get<any>(`${this.myURL}login/`+user.customerMobileNo+`/`+user.password);
   }
   updatePwd(form){
     return this.http.post<any>(`${this.myURL}updatePWD`, form);

@@ -1,0 +1,15 @@
+nav{
+    background-color: darkcyan;
+}
+body, html{
+	height: 100%;
+	width:100%;
+}
+body{
+	font-size: 1rem;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+a{
+    text-align: left;
+    color: rgb(255, 255, 255);
+}
