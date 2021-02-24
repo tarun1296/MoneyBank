@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AccountRegisterComponent } from './account-register/account-register.component';
 import { ConfirmPasswordComponent } from './confirm-password/confirm-password.component';
 import { HomeComponent } from './home/home.component';
+import { CustomeridComponent } from './customerid/customerid.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     AccountRegisterComponent,
     ConfirmPasswordComponent,
     HomeComponent,
+    CustomeridComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

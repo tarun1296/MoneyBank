@@ -34,12 +34,13 @@
 							</div>
 
 							<div class="form-group">
-								<input type="text" class="form-control" id="dob" name="dob"
-									placeholder="DOB(DD/MM/YYYY)" #dob='ngModel' ngModel required pattern="*">
+								<input type="text" class="form-control" id="dob" name="dob" 
+								onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')"
+									placeholder="DOB(DD/MM/YYYY)" #dob='ngModel' ngModel maxlength="10" required pattern="[\\0-9]">
 							</div>
 							<div *ngIf="dob.touched && dob.invalid">
-								<p class="alert alert-danger" *ngIf="dob.errors.required">LastName is required</p>
-								<p class="alert alert-danger" *ngIf="dob.errors.pattern">Accepts only Alphabets</p>
+								<p class="alert alert-danger" *ngIf="dob.errors.required">Date of Birth is required</p>
+								<p class="alert alert-danger" *ngIf="dob.errors.pattern">Accepts only Numbers and Black slash'/'</p>
 							</div>
 
 

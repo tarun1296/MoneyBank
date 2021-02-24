@@ -28,7 +28,8 @@ export class RegisterComponent implements OnInit {
         }, 5000);
       }else{
         alert('Registered Successfully');
-        this.router.navigateByUrl('/login');
+        sessionStorage.setItem("key", JSON.stringify(response));
+        this.router.navigateByUrl('/customerid');
         setTimeout( () => {
           this.message = null;
          }, 3000);
