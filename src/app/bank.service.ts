@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CustomerEntity } from './CustomerEntitiy';
 
 
 @Injectable({
@@ -14,7 +16,7 @@ export class BankService {
 
   myURL = 'http://localhost:8080/lmsspringrest/';
 
-  register(user) {
+  register(user):Observable<CustomerEntity> {
     return this.http.post<any>(`${this.myURL}addUser`, user);
   }
   

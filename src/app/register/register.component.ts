@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { BankService } from '../bank.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   registerUser(form: NgForm){
     this.bankService.register(form.value).subscribe(response => {
       console.log(response);
-      if (response.error){
+      if (response.){
         this.error = response.message;
         alert('Failed to Register');
         setTimeout( () => {
