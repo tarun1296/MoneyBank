@@ -14,18 +14,25 @@ export class ConfirmPasswordComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  updatePwd(form: NgForm) {
+  updatePwd(form) {
+    console.log(form.password)
     console.log(form.value);
-    this.bankService.login(form.value).subscribe((response) => {
+    this.bankService.updatePwd(form.customerMobileNo,form.password,form.new_password).subscribe((response) => {
       console.log(response);
       if (response.error) {
-        alert(response.message);
+        alert("Some Thing went wrong Please check Password")
         this.error = response.message;
         setTimeout(() => {
           this.error = null;
         }, 5000);
       } else {
+        alert(response.value)
+        
+        if(response.value === "Some Thing went wrong PLease check password"){
+          this.router.navigateByUrl('/updatePassword');
+        }else{
         this.router.navigateByUrl('/login');
+        }
       }
     });
   }

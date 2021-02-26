@@ -7,20 +7,20 @@ import { RegisterComponent } from '../register/register.component';
   styleUrls: ['./customeraddsuccess.component.css']
 })
 export class CustomeraddsuccessComponent implements OnInit {
-  userId: string;
-
+  response: string;
 
   // constructor(private reg: RegisterComponent) { 
 
   // }
+  constructor(){
 
-  
+  }
+
+
 
   ngOnInit(): void {
-    // this.userId = this.reg.result;
-    // console.log(this.userId);
-    this.userId = 
-
+    this.response = localStorage.getItem("userdata");
+    
   }
 
 }

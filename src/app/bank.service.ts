@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { conformation } from './Models/conformation';
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class BankService {
-
+  res: conformation;
 
   constructor(private http: HttpClient) {
   }
@@ -17,14 +18,15 @@ export class BankService {
   register(user) {
     return this.http.post<any>(`${this.myURL}addUser`, user);
   }
-  
 
-  login(user){
-    return this.http.get<any>(`${this.myURL}login/`+user.customerMobileNo+`/`+user.password);
+
+  login(user) {
+    return this.http.get<any>(`${this.myURL}login/` + user.customerMobileNo + `/` + user.password);
   }
-  updatePwd(form){
-    return this.http.post<any>(`${this.myURL}updatePWD`, form);
-    
+  updatePwd(customerMobileNo, password, new_password) {
+    this.res = new conformation(customerMobileNo, password, new_password);
+    return this.http.post<any>(`${this.myURL}updatePwd/`, this.res);
+
   }
-  
+
 }

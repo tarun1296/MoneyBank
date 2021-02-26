@@ -10,32 +10,38 @@ import { customerEntity } from './customerEntity';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
- 
-  public result: customerEntity;
+
+  public result: string;
   message;
   error;
-  constructor(private router: Router,private bankService: BankService) { }
+  constructor(private router: Router, private bankService: BankService) { }
 
   ngOnInit(): void {
   }
-  registerUser(form: NgForm){
+  registerUser(form: NgForm) {
     this.bankService.register(form.value).subscribe(response => {
       console.log(response);
-      if (response.error){
-        this.error = response.message;
+      if (response.error) {
+        this.error = response.value;
         alert(this.error);
-        setTimeout( () => {
-         this.error = null;
+        setTimeout(() => {
+          this.error = null;
         }, 5000);
-      }else{
-        alert('Registered Successfully');
-        // this.result = response;
-        this.result = new customerEntity(response,"");
-        console.log(this.result);
-        this.router.navigateByUrl('/addsuccess');
-        setTimeout( () => {
+      } else {
+        if (response.value === "customer already exists") {
+          alert(response.value);
+          this.router.navigateByUrl('/register');
+        }
+        else {
+
+          // this.result = response;
+          localStorage.setItem("userdata", response.value);
+          
+          this.router.navigateByUrl('/addsuccess');
+
+        } setTimeout(() => {
           this.message = null;
-         }, 3000);
+        }, 3000);
       }
       form.reset();
     });
